@@ -14,11 +14,15 @@ document.addEventListener("click", function(e){
 })
 
 
-let show = false
+let show_lines = false
+let start_spiral = false
 
 document.addEventListener("keydown", function(e){
     if(e.key == "Enter"){
-        show = !show
+        show_lines = !show_lines
+    }
+    if(e.key == "s"){
+        start_spiral = !start_spiral
     }
 })
 
@@ -50,7 +54,7 @@ function Loop(){
         //====================================================================================================
         
 
-        if(show){
+        if(show_lines){
             for (let i=0; i<arr.length; i++){
                 DrawLine(arr[i], arr[(i+1)%arr.length], "black")
             }
@@ -72,16 +76,33 @@ function Loop(){
         sum_of_distances = 0
         for (let i = 0; i < arr.length-1; i++){
             sum_of_distances += FindDistance(arr[i], arr[(i+1)%arr.length])
-            r = sum_of_distances/(2*arr.length)
-            return r   //radius of inner circle
         }
 
+        r = sum_of_distances/(2*arr.length)
+
+        // d = r
+        
+
+        points = []
+        for (let t = 0; t < 2*Math.PI; t+=0.01) {
+            let x = centroid.x + (R-r)*Math.cos(t) + d*Math.cos((R-r)*t/r)
+            let y = centroid.y + (R-r)*Math.sin(t) - d*Math.sin((R-r)*t/r)
+            points.push(new Vec2d(x,y))
+        }
+
+        if (start_spiral){
+            for (let i = 0; i < points.length-1; i++) {
+                DrawLine(points[i], points[i+1], "blue")
+            }
+        }
+ 
         
 
 
 
+
+}
      
-    }
     //=======================================================================================     
     
     
