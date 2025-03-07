@@ -233,6 +233,23 @@ function FillCentroid(vertices){
 
 }
 
+function FindDistance(a,b){
+    return Math.sqrt((b.x-a.x)*(b.x-a.x) + (b.y-a.y)*(b.y-a.y));
+}
+
+function GetMaxDistance(a,b){
+    let maxDistance = 0
+    for (let i = 0; i < a.length; i++){
+        let distance = FindDistance(a[i],b)
+        if (distance > maxDistance){
+            maxDistance = distance
+        }
+    }
+    return maxDistance
+}
+
+function GetMaxD
+
 
 //==================================================================================
 
