@@ -62,11 +62,12 @@ function Loop(){
         
         for (let i = 0; i < arr.length; i++){
             // DrawCircle(arr[i], 5, "red")
-            FillCircle(arr[i], 5, "red")
+            DrawPoint(arr[i], 5, "red")
         }
 
-        FillCentroid(arr)
+
         let centroid = FindCentroid(arr)
+        DrawPoint(centroid, 5, "green")
 
         R = GetMaxDistance(arr, centroid) // radius of outer circle
         // R_point = GetMaxDistancePoint(arr, centroid) // point on outer circle
@@ -84,7 +85,7 @@ function Loop(){
 
 
         points = []
-        for (let t = 0; t < 50*Math.PI; t+=0.01) {
+        for (let t = 0; t < 10*Math.PI; t+=0.01) {
             let x = centroid.x + (R-r)*Math.cos(t) + d*Math.cos((R-r)*t/r)
             let y = centroid.y + (R-r)*Math.sin(t) - d*Math.sin((R-r)*t/r)
             points.push(new Vec2d(x,y))
@@ -92,7 +93,7 @@ function Loop(){
 
         if (start_spiral){
             for (let i = 0; i < points.length-1; i++) {
-                FillCircle(points[i], 3, "blue")
+                DrawPoint(points[i], 3, "blue")
             }
         }
  

@@ -157,7 +157,7 @@ function DrawLineColored(vertexA, vertexB, segmentLength = 4) {
 
 }
 //GPT :)
-function FillCircle(vertex, r, fillCol = 'black') {
+function DrawPoint(vertex, r, fillCol = 'black') {
     ctx.fillStyle = fillCol;
     ctx.beginPath();
     ctx.arc(vertex.x, vertex.y, r, 0, 2 * Math.PI);
@@ -219,19 +219,7 @@ function FindCentroid(vertices){
     return new Vec2d(xc,yc);
 }
 
-function FillCentroid(vertices){
-    let xc=0; let yc=0;
-    for(let i=0;i<vertices.length;i++){
-        xc += vertices[i].x;
-        yc += vertices[i].y;
-    }
-    xc = xc/vertices.length;    
-    yc = yc/vertices.length;
-    if (vertices.length > 1){
-        FillCircle(new Vec2d(xc,yc),5,'blue');
-    }
 
-}
 
 function FindDistance(a,b){
     return Math.sqrt((b.x-a.x)*(b.x-a.x) + (b.y-a.y)*(b.y-a.y));
@@ -260,6 +248,8 @@ function GetMaxDistancePoint(a,b){
     }
     return maxPoint
 }
+
+
 
 
 //==================================================================================
