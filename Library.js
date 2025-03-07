@@ -207,6 +207,21 @@ function DrawPolygon3(vertices ,lineCol='red',lw=5,fillcol='black' ){
 
 }
 
+
+function FindCentroid(vertices){
+    let xc=0; let yc=0;
+    for(let i=0;i<vertices.length;i++){
+        xc += vertices[i].x;
+        yc += vertices[i].y;
+    }
+    xc = xc/vertices.length;    
+    yc = yc/vertices.length;
+    if (vertices.length > 1){
+        FillCircle(new Vec2d(xc,yc),5,'blue');
+    }
+
+}
+
 //==================================================================================
 
 //=======================Transform class===================================================================
