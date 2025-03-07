@@ -246,7 +246,24 @@ function GetMaxDistancePoint(a,b){
             maxPoint = a[i]
         }
     }
-    return maxPoint
+    return maxPoint 
+}
+
+function AnimatePoints(points, r, delayMs, color, onComplete = null){
+    let currentIndex = 0
+
+    function DrawPointAtIndex(){
+        DrawPoint(points[currentIndex], r, color)
+        currentIndex++
+        if (currentIndex < points.length){
+            setTimeout(DrawPointAtIndex, delayMs)
+        } else {
+            if (onComplete){
+                onComplete()
+            }
+        }
+    }
+    DrawPointAtIndex()
 }
 
 

@@ -92,15 +92,9 @@ function Loop(){
         }
 
         if (start_spiral){
-            for (let i = 0; i < points.length-1; i++) {
-                DrawPoint(points[i], 3, "blue")
-            }
+                AnimatePoints(points, 3, 0.000002, "blue")
         }
- 
         
-
-
-
 
 }
      
