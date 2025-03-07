@@ -216,6 +216,17 @@ function FindCentroid(vertices){
     }
     xc = xc/vertices.length;    
     yc = yc/vertices.length;
+    return new Vec2d(xc,yc);
+}
+
+function FillCentroid(vertices){
+    let xc=0; let yc=0;
+    for(let i=0;i<vertices.length;i++){
+        xc += vertices[i].x;
+        yc += vertices[i].y;
+    }
+    xc = xc/vertices.length;    
+    yc = yc/vertices.length;
     if (vertices.length > 1){
         FillCircle(new Vec2d(xc,yc),5,'blue');
     }
