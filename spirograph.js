@@ -69,6 +69,15 @@ function Loop(){
         // DrawLine(centroid, R_point, "orange")
 
 
+        sum_of_distances = 0
+        for (let i = 0; i < arr.length-1; i++){
+            sum_of_distances += FindDistance(arr[i], arr[(i+1)%arr.length])
+            r = sum_of_distances/(2*arr.length)
+            return r   //radius of inner circle
+        }
+
+        
+
 
 
      
