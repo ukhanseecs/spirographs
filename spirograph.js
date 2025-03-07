@@ -80,11 +80,11 @@ function Loop(){
 
         r = sum_of_distances/(2*arr.length)
 
-        // d = r
-        
+        d = 60
+
 
         points = []
-        for (let t = 0; t < 2*Math.PI; t+=0.01) {
+        for (let t = 0; t < 50*Math.PI; t+=0.01) {
             let x = centroid.x + (R-r)*Math.cos(t) + d*Math.cos((R-r)*t/r)
             let y = centroid.y + (R-r)*Math.sin(t) - d*Math.sin((R-r)*t/r)
             points.push(new Vec2d(x,y))
@@ -92,7 +92,7 @@ function Loop(){
 
         if (start_spiral){
             for (let i = 0; i < points.length-1; i++) {
-                DrawLine(points[i], points[i+1], "blue")
+                FillCircle(points[i], 3, "blue")
             }
         }
  
