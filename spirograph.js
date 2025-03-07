@@ -85,14 +85,16 @@ function Loop(){
 
 
         points = []
-        for (let t = 0; t < 10*Math.PI; t+=0.01) {
+        for (let t = 0; t < 130*Math.PI; t+=0.01) {
             let x = centroid.x + (R-r)*Math.cos(t) + d*Math.cos((R-r)*t/r)
             let y = centroid.y + (R-r)*Math.sin(t) - d*Math.sin((R-r)*t/r)
             points.push(new Vec2d(x,y))
         }
 
         if (start_spiral){
-                AnimatePoints(points, 3, 0.000002, "blue")
+            for (i = 0; i < points.length; i++){
+                DrawLine(points[i], points[(i+1)%points.length], "blue")
+            }
         }
         
 
