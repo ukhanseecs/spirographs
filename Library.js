@@ -248,7 +248,18 @@ function GetMaxDistance(a,b){
     return maxDistance
 }
 
-function GetMaxD
+function GetMaxDistancePoint(a,b){
+    let maxDistance = 0
+    let maxPoint = a[0]
+    for (let i = 0; i < a.length; i++){
+        let distance = FindDistance(a[i],b)
+        if (distance > maxDistance){
+            maxDistance = distance
+            maxPoint = a[i]
+        }
+    }
+    return maxPoint
+}
 
 
 //==================================================================================

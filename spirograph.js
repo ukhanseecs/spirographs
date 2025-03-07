@@ -65,7 +65,8 @@ function Loop(){
         let centroid = FindCentroid(arr)
 
         R = GetMaxDistance(arr, centroid) // radius of outer circle
-        DrawLine(centroid, )
+        // R_point = GetMaxDistancePoint(arr, centroid) // point on outer circle
+        // DrawLine(centroid, R_point, "orange")
 
 
 
