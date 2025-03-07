@@ -3,6 +3,8 @@ const fps = 60;
 const msPerFrame = 1000 / fps;
 
 let arr = []; //push points here
+let t = 0; // spirograph angle
+let points = [] // points on spirograph
 
 document.addEventListener("click", function(e){
 
@@ -83,18 +85,20 @@ function Loop(){
 
         d = 60
 
-
-        points = []
-        for (let t = 0; t < 130*Math.PI; t+=0.01) {
-            let x = centroid.x + (R-r)*Math.cos(t) + d*Math.cos((R-r)*t/r)
-            let y = centroid.y + (R-r)*Math.sin(t) - d*Math.sin((R-r)*t/r)
+        if (start_spiral) {  
+            const step = 50000;
+            let x = centroid.x + (R-r)*Math.cos(t) + d*Math.cos((R-r)*t/r);
+            let y = centroid.y + (R-r)*Math.sin(t) - d*Math.sin((R-r)*t/r);
             points.push(new Vec2d(x,y))
-        }
 
-        if (start_spiral){
-            for (i = 0; i < points.length; i++){
-                DrawLine(points[i], points[(i+1)%points.length], "blue")
+            // for (i=0; i<points.length; i++){
+            //     DrawPoint(points[i], 3, i % 2 === 0 ? "yellow" : "red");
+            // }
+            for (let i=0; i<points.length; i++){
+                // DrawLine(points[i], points[(i+1)%points.length], "red")
+                DrawLine(points[i], points[(i+1)%points.length], i % 2 === 0 ? "yellow" : "red")
             }
+            t += step;
         }
         
 
